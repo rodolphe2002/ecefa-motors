@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECEFA Motors - Formation Conducteurs d'Engins</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Animation de fond -->
+    <div class="animated-background">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Popup de profil -->
+    <div class="profile-popup">
+        <div class="popup-content">
+            <h2>Qui êtes-vous ?</h2>
+            <div class="profile-options">
+                <button class="profile-btn" data-profile="apprenant">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Apprenant</span>
+                </button>
+                <button class="profile-btn" data-profile="entreprise">
+                    <i class="fas fa-building"></i>
+                    <span>Entreprise</span>
+                </button>
+                <button class="profile-btn" data-profile="recruteur">
+                    <i class="fas fa-search"></i>
+                    <span>Recruteur</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">ECEFA <span>Motors</span></a>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Accueil</a></li>
+                <li><a href="#">Formations</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-video">
+            <video autoplay muted loop>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-excavator-working-1230-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-content">
+            <h1>Professionnelle Conducteurs d'Engins</h1>
+            <p>Développez vos compétences et boostez votre carrière avec nos formations certifiantes.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">🛠️ Nos Formations</a>
+                <a href="#" class="btn btn-outline">📞 Contactez-nous</a>
+            </div>
+        </div>
+        <div class="hero-badge badge-1">
+            <i class="fas fa-certificate"></i>
+            <span>Formation Certifiée</span>
+        </div>
+        <div class="hero-badge badge-2">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Instructeurs Experts</span>
+        </div>
+    </section>
+
+    <!-- Carrousel -->
+    <section class="carousel-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Expertise</h2>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./img/C1.webp" alt="Formation Engins">
+                        <div class="slide-content">
+                            <h3>Connaissance accrue</h3>
+                            <p>Devenez un expert dans l'un de nos domaines avec une formation complète et pratique</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/C2.png" alt="Pratique">
+                        <div class="slide-content">
+                            <h3>Formation pratique</h3>
+                            <p>Apprenez sur des engins réels avec nos instructeurs experts</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/C3.webp" alt="Certification">
+                        <div class="slide-content">
+                            <h3>Certification reconnue</h3>
+                            <p>Obtenez un diplôme valorisé par les employeurs du secteur</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <div class="container">
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>À Propos de Nous</h3>
+                        <p>Nous offrons des solutions adaptées à vos besoins pour un avenir meilleur. Notre centre de formation est équipé des dernières technologies et de formateurs expérimentés.</p>
+                        <a href="#" class="card-btn">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Nos Services</h3>
+                        <p>Explorez nos services pour découvrir ce que nous pouvons accomplir ensemble. Formations sur mesure, certification professionnelle, et accompagnement personnalisé.</p>
+                        <a href="#" class="card-btn">Explorer les Services</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Contactez-Nous</h3>
+                        <p>Nous sommes à votre disposition pour toutes vos questions et demandes. Notre équipe vous répondra dans les plus brefs délais.</p>
+                        <a href="#" class="card-btn">Contactez-nous</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>Coordonnées des Agences</h4>
+                    <div class="agency">
+                        <h5>Agence Treichville</h5>
+                        <p><i class="fas fa-phone"></i> 25 21 00 24 02 / 07 58 18 75 21</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Abidjan, Treichville, Côte d'Ivoire</p>
+                        <p><i class="fas fa-envelope"></i> formations@ecfa.ci</p>
+                    </div>
+                    <div class="agency">
+                        <h5>Agence Yopougon</h5>
+                        <p><i class="fas fa-phone"></i> 21 21 80 26 80 / 07 98 63 98 80 / 01 03 19 41 06</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Abidjan, Yopougon, Côte d'Ivoire</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Conditions Générales</a></li>
+                        <li><a href="#">Politique de Confidentialité</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Réseaux Sociaux</h4>
+                    <p>Suivez-nous sur les réseaux sociaux pour rester informé de nos dernières actualités et formations.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>©2025 | ECEFA Motors. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Popup de profil
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePopup = document.querySelector('.profile-popup');
+            const profileButtons = document.querySelectorAll('.profile-btn');
+            
+            // Vérifier si le profil est déjà choisi
+            const userProfile = localStorage.getItem('userProfile');
+            if (userProfile) {
+                profilePopup.style.display = 'none';
+            }
+            
+            // Gestion du choix de profil
+            profileButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const profile = this.getAttribute('data-profile');
+                    localStorage.setItem('userProfile', profile);
+                    
+                    // Animation de sortie
+                    profilePopup.style.animation = 'popupExit 0.6s forwards';
+                    
+                    setTimeout(() => {
+                        profilePopup.style.display = 'none';
+                    }, 600);
+                });
+            });
+            
+            // Initialisation du carrousel Swiper
+            const swiper = new Swiper('.mySwiper', {
+                effect: 'fade',
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+            
+            // Gestion du menu hamburger
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Effet de scroll sur la navbar
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Animation des cartes au défilement
+            const cardsSection = document.querySelector('.cards-section');
+            const cards = document.querySelectorAll('.card');
+            
+            function checkScroll() {
+                const sectionTop = cardsSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.85) {
+                    cardsSection.classList.add('in-view');
+                }
+            }
+            
+            // Vérifier au chargement et au défilement
+            window.addEventListener('load', checkScroll);
+            window.addEventListener('scroll', checkScroll);
+            
+            // Animation au survol des boutons
+            const buttons = document.querySelectorAll('.btn, .card-btn');
+            buttons.forEach(button => {
+                button.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    this.style.setProperty('--x', `${x}px`);
+                    this.style.setProperty('--y', `${y}px`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

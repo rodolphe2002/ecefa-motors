@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECEFA Motors - Formation Conducteurs d'Engins</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <!-- Loader
+    <div class="loader">
+        <div class="loader-logo">
+            <svg viewBox="0 0 100 100">
+                <path d="M50 10 L80 50 L50 90 L20 50 Z" fill="none" stroke="var(--primary)" stroke-width="5" />
+                <circle cx="50" cy="50" r="25" fill="none" stroke="var(--secondary)" stroke-width="5" />
+            </svg>
+        </div>
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+    </div> -->
+
+    <!-- Profile Modal -->
+    <div class="profile-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+
+            <h2>Qui êtes-vous ?</h2>
+            <p>Sélectionnez votre profil pour personnaliser votre expérience</p>
+            
+            <div class="profile-options">
+                <div class="profile-option" data-profile="learner">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Apprenant</h3>
+                    <p>Je cherche une formation pour devenir conducteur d'engins</p>
+                </div>
+                <div class="profile-option" data-profile="company">
+                    <i class="fas fa-building"></i>
+                    <h3>Entreprise</h3>
+                    <p>Je souhaite former mes employés à la conduite d'engins</p>
+                </div>
+                <div class="profile-option" data-profile="recruiter">
+                    <i class="fas fa-search"></i>
+                    <h3>Recruteur</h3>
+                    <p>Je recherche des conducteurs d'engins qualifiés</p>
+                </div>
+
+
+
+                <!-- Champs dynamiques -->
+<form id="profile-form" class="dynamic-form">
+    <div id="learner-fields" class="profile-fields hidden">
+        <input type="text" placeholder="Nom complet">
+        <input type="tel" placeholder="Numéro de téléphone">
+        <input type="email" placeholder="Adresse mail">
+    </div>
+    
+    <div id="company-fields" class="profile-fields hidden">
+        <input type="text" placeholder="Nom de l'entreprise">
+        <input type="tel" placeholder="Numéro de l'entreprise">
+        <input type="email" placeholder="Adresse mail de l'entreprise">
+    </div>
+    
+    <div id="recruiter-fields" class="profile-fields hidden">
+        <input type="text" placeholder="Nom de l'entreprise">
+        <input type="text" placeholder="Profil recherché">
+        <input type="email" placeholder="Adresse mail">
+        <input type="tel" placeholder="Numéro de l'entreprise">
+    </div>
+</form>
+
+            </div>
+            
+            <button class="modal-btn">Valider mon choix</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="logo">
+            <img src="./img/logo.jpg" alt="">
+
+        </div>
+        
+        <div class="nav-links">
+            <a href="./index.html" class="active">Accueil</a>
+            <a href="./formation.html" >Formations</a>
+            <a href="./contact.html" >Contact</a>
+            <a href="./apropos.html" >À propos</a>
+        </div>
+        
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Devenez <span>Conducteur d'Engins</span> Professionnel</h1>
+            <p>Développez vos compétences et boostez votre carrière avec nos formations certifiantes. ECEFA Motors, votre partenaire pour devenir un conducteur d'engins qualifié.</p>
+            <div class="hero-buttons">
+                <a href="./formation.html" class="btn btn-primary">
+                    <i class="fas fa-tools"></i>
+                    Nos Formations
+                </a>
+                <a href="./contact.html" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Contactez-nous
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-image">
+            <img src="./img/machine.webp" alt="Conducteur d'engins">
+        </div>
+        
+        <div class="hero-badges">
+            <div class="badge">
+                <i class="fas fa-award"></i>
+                <div class="badge-content">
+                    <h3>Formation Certifiée</h3>
+                    <p>Diplômes reconnus par l'État</p>
+                </div>
+            </div>
+            <div class="badge">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <div class="badge-content">
+                    <h3>Instructeurs Experts</h3>
+                    <p>Plus de 10 ans d'expérience</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="floating-elements">
+            <div class="floating-element" style="top: 20%; left: 10%; animation: float 6s infinite ease-in-out;"></div>
+            <div class="floating-element" style="top: 40%; left: 85%; animation: float 8s infinite ease-in-out 1s;"></div>
+            <div class="floating-element" style="top: 70%; left: 15%; animation: float 7s infinite ease-in-out 2s;"></div>
+            <div class="floating-element" style="top: 85%; left: 70%; animation: float 9s infinite ease-in-out 0.5s;"></div>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+        <div class="section-title">
+            <h2>Nos Domaines d'Expertise</h2>
+            <p>Découvrez nos formations spécialisées pour devenir un expert dans votre domaine</p>
+        </div>
+        
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="./img/C1.webp" alt="Formation Pelle Hydraulique">
+                    <div class="swiper-content">
+                        <h3>Pelle Hydraulique</h3>
+                        <p>Maîtrisez les techniques avancées de manipulation des pelles hydrauliques avec nos formateurs experts.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./img/C2.png" alt="Formation Grue">
+                    <div class="swiper-content">
+                        <h3>Opérateur de Grue</h3>
+                        <p>Devenez un expert dans la manipulation sécuritaire des grues de chantier avec notre programme intensif.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./img/C3.webp" alt="Formation Bulldozer">
+                    <div class="swiper-content">
+                        <h3>Conducteur de Bulldozer</h3>
+                        <p>Apprenez à maîtriser les bulldozers sur tous types de terrains et dans toutes les conditions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <div class="section-title">
+            <h2>Pourquoi Choisir ECEFA Motors</h2>
+            <p>Notre engagement pour votre réussite professionnelle</p>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="card-content">
+                    <h3>À Propos de Nous</h3>
+                    <p>ECEFA Motors est un centre de formation d'excellence spécialisé dans la conduite d'engins de chantier. Depuis plus de 10 ans, nous formons des professionnels compétents et recherchés sur le marché.</p>
+                    <a href="./apropos.html" class="btn btn-secondary">En savoir plus</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-concierge-bell"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Nos Services</h3>
+                    <p>Nous proposons une gamme complète de formations adaptées à tous les niveaux, des formations initiales aux perfectionnements pour professionnels. Toutes nos formations sont certifiantes et reconnues.</p>
+                    <a href="./formation.html" class="btn btn-secondary">Explorer les Services</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Contactez-Nous</h3>
+                    <p>Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accompagner dans votre projet de formation. Contactez-nous pour un conseil personnalisé.</p>
+                    <a href="./contact.html" class="btn btn-primary">Contactez-nous</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Coordonnées</h3>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Agence Treichville</h4>
+                            <p>Abidjan, Treichville, Côte d'Ivoire</p>
+                            <p>📞 25 21 00 24 02 / 07 58 18 75 21</p>
+                            <p>✉️ formations@ecfa.ci</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Agence Yopougon</h4>
+                            <p>Abidjan, Yopougon, Côte d'Ivoire</p>
+                            <p>📞 21 21 80 26 80 / 07 98 63 98 80 / 01 03 19 41 06</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
+                <a href="./index.html">Accueil</a>
+                <a href="./formation.html">Formations</a>
+                <a href="./apropos.html">À propos</a>
+                <a href="./contact.html">Contact</a>
+                <a href="#">Conditions Générales</a>
+                <a href="#">Politique de Confidentialité</a>
+                <a href="#">FAQ</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Réseaux Sociaux</h3>
+                <p>Suivez-nous pour rester informé de nos actualités et formations</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>©2025 | ECEFA Motors. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
