@@ -10,7 +10,26 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = [
+  'https://ecefa-motors-7q08eus2b-kouadio-bah-rodolphes-projects.vercel.app', // Ton vrai domaine Vercel
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Autoriser les outils locaux ou Vercel
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Non autorisé par la politique CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}));
+// Pour gérer les pré-requêtes OPTIONS
+app.options('*', cors());
+
 app.use(express.json());
 
 const { MONGODB_URI, ADMIN_USERNAME, ADMIN_PASSWORD } = process.env;
