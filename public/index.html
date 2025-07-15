@@ -28,7 +28,9 @@
     </div> -->
 
     <!-- Profile Modal -->
-    <div class="profile-modal">
+
+
+    <!-- <div class="profile-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
 
@@ -50,37 +52,99 @@
                     <i class="fas fa-search"></i>
                     <h3>Recruteur</h3>
                     <p>Je recherche des conducteurs d'engins qualifiés</p>
-                </div>
+                </div> -->
 
 
 
                 <!-- Champs dynamiques -->
-<form id="profile-form" class="dynamic-form">
-    <div id="learner-fields" class="profile-fields hidden">
-        <input type="text" placeholder="Nom complet">
-        <input type="tel" placeholder="Numéro de téléphone">
-        <input type="email" placeholder="Adresse mail">
-    </div>
-    
-    <div id="company-fields" class="profile-fields hidden">
-        <input type="text" placeholder="Nom de l'entreprise">
-        <input type="tel" placeholder="Numéro de l'entreprise">
-        <input type="email" placeholder="Adresse mail de l'entreprise">
-    </div>
-    
-    <div id="recruiter-fields" class="profile-fields hidden">
-        <input type="text" placeholder="Nom de l'entreprise">
-        <input type="text" placeholder="Profil recherché">
-        <input type="email" placeholder="Adresse mail">
-        <input type="tel" placeholder="Numéro de l'entreprise">
-    </div>
+<!-- <form id="profile-form" class="dynamic-form">
+  
 </form>
+
 
             </div>
             
             <button class="modal-btn">Valider mon choix</button>
         </div>
-    </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+   <!-- Barre verticale des profils -->
+<div class="profile-sidebar">
+  <div class="profile-card" data-profile="learner">
+    <i class="fas fa-user-graduate"></i>
+    <span>Apprenants</span>
+  </div>
+  <div class="profile-card" data-profile="company">
+    <i class="fas fa-building"></i>
+    <span>Entreprises</span>
+  </div>
+  <div class="profile-card" data-profile="recruiter">
+    <i class="fas fa-search"></i>
+    <span>Recruteurs</span>
+  </div>
+</div>
+
+<!-- POPUP MODAL pour les champs -->
+<div class="popup-form hidden" id="popupForm">
+  <div class="popup-content">
+    <span class="close-popup">&times;</span>
+
+    <form id="profile-form" class="dynamic-form">
+      <!-- Apprenant -->
+      <div id="learner-fields" class="profile-fields hidden">
+        <h3>Formulaire Apprenant</h3>
+        <input type="text" id="learner-name" placeholder="Nom complet" />
+        <input type="tel" id="learner-phone" placeholder="Téléphone" />
+        <input type="tel" id="learner-whatsapp" placeholder="WhatsApp" />
+      </div>
+
+      <!-- Entreprise -->
+      <div id="company-fields" class="profile-fields hidden">
+        <h3>Formulaire Entreprise</h3>
+        <input type="text" id="company-name" placeholder="Nom de l'entreprise" />
+        <input type="tel" id="company-phone" placeholder="Téléphone de l'entreprise" />
+        <input type="text" id="company-contact-name" placeholder="Nom du responsable" />
+        <input type="tel" id="company-contact-phone" placeholder="Téléphone du responsable" />
+        <input type="number" id="company-employee-count" placeholder="Nombre d'employés" />
+        <select id="company-training-type">
+          <option value="">-- Type de formation --</option>
+          <option value="Pelle">Pelle</option>
+          <option value="Grue">Grue</option>
+        </select>
+        <input type="text" id="company-employee-level" placeholder="Niveau d’étude" />
+      </div>
+
+      <!-- Recruteur -->
+      <div id="recruiter-fields" class="profile-fields hidden">
+        <h3>Formulaire Recruteur</h3>
+        <input type="text" id="recruiter-company-name" placeholder="Nom de l'entreprise" />
+        <input type="tel" id="recruiter-company-phone" placeholder="Téléphone de l'entreprise" />
+        <input type="text" id="recruiter-contact-name" placeholder="Nom du contact" />
+        <input type="tel" id="recruiter-contact-phone" placeholder="Téléphone du contact" />
+        <textarea id="recruiter-profile-description" placeholder="Profil recherché"></textarea>
+      </div>
+      
+  <button type="button" id="submit-profile" class="modal-btn">Valider</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
 
     <!-- Header -->
     <header>
@@ -287,6 +351,22 @@
             <p>©2025 | ECEFA Motors. Tous droits réservés.</p>
         </div>
     </footer>
+
+<!-- POPUP de bienvenue -->
+<div id="welcome-popup" class="welcome-popup">
+  <div class="welcome-content">
+    <span class="close-welcome">&times;</span>
+    <h2>Bienvenue sur <span style="color: var(--primary);">ECEFA MOTORS</span> 🚀</h2>
+    <p>Bonjour et bienvenue sur notre plateforme !</p>
+    <p>👉 En haut à droite, vous trouverez 3 options importantes :</p>
+    <ul>
+      <li>👤 <strong>Apprenants :</strong> Pour toute personne souhaitant s’inscrire à une formation.</li>
+      <li>🏢 <strong>Entreprises :</strong> Pour les entreprises qui veulent former leur personnel.</li>
+      <li>🔍 <strong>Recrutements :</strong> Pour les entreprises souhaitant recruter nos auditeurs.</li>
+    </ul>
+    <button id="close-welcome-btn">Compris</button>
+  </div>
+</div>
 
     <script src="./script.js"></script>
 </body>
