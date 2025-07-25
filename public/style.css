@@ -197,6 +197,8 @@
   /* Hero Section */
   .hero {
 
+    margin-top: 50px;
+
       height: 100vh;
       display: flex;
       align-items: center;
@@ -919,6 +921,8 @@
           justify-content: center;
           text-align: center;
           padding-top: 80px;
+          height: auto;
+          padding-bottom: 50px;
       }
 
       .hero-content {

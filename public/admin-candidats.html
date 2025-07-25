@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Liste des candidats</title>
+  <link rel="stylesheet" href="admin-candidats.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Liste des candidats</h1>
+    <input type="text" id="searchInput" placeholder="Rechercher un nom, email..." />
+
+    <select id="filterSexe">
+      <option value="">Tous les types</option>
+      <option value="Apprenant">Apprenant</option>
+      <option value="Recruteur">Recruteur</option>
+      <option value="Recruteur">Entreprise</option>
+    </select>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Téléphone</th>
+          <th>Email</th>
+          <th>Type</th>
+          <th>Infos Supplémentaires</th>
+        </tr>
+      </thead>
+      <tbody id="candidatTableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="admin-candidats.js"></script>
+</body>
+</html>

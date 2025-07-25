@@ -1,5 +1,9 @@
-// === Définir l'URL du back-end ===
-const BASE_URL = "https://ecefa-motors.onrender.com";
+// // === Définir l'URL du back-end ===
+// const BASE_URL = "https://ecefa-motors.onrender.com";
+
+const BASE_URL = window.location.hostname === "localhost"
+  ? "http://localhost:5000"
+  : "https://ecefa-motors.onrender.com";
 
 // === Gestion déconnexion ===
 document.getElementById('logoutBtn').addEventListener('click', function () {
@@ -268,3 +272,24 @@ function translateSubject(subject) {
     default: return '-';
   }
 }
+
+
+document.querySelectorAll('.view-all').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const section = this.dataset.section;
+
+    switch (section) {
+      case 'candidats':
+        // Rediriger vers une page avec la liste complète des profils
+        window.location.href = '/admin-candidats.html';
+        break;
+      case 'messages':
+        // Rediriger vers une page avec tous les messages
+        window.location.href = '/admin-messages.html';
+        break;
+      default:
+        console.warn('Section inconnue :', section);
+    }
+  });
+});

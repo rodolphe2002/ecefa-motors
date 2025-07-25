@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   'https://ecefa-motors-7q08eus2b-kouadio-bah-rodolphes-projects.vercel.app',
-  'http://localhost:3000' // utile en local
+  'http://localhost:5000' // utile en local
 ];
 
 // === CORS ===
@@ -31,7 +31,9 @@ app.use(cors({
 }));
 
 // Permet de répondre aux requêtes OPTIONS
-app.options('*', cors());
+// // app.options('*', cors());
+// app.options('/*', cors()); // match tous les chemins
+
 
 // Middleware pour lire JSON
 app.use(express.json());

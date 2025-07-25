@@ -134,7 +134,7 @@
 
         /* Hero Section */
         .hero-training {
-            height: 70vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
@@ -142,6 +142,7 @@
             padding: 0 5%;
             background: linear-gradient(135deg, rgba(10, 102, 194, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
             margin-top: 80px;
+            padding-bottom: 50px;
         }
 
         .hero-content {
@@ -246,6 +247,10 @@
             width: 500px;
             height: 500px;
             z-index: 1;
+
+         
+            
+           
         }
 
           .blob {
@@ -260,6 +265,9 @@
             filter: blur(0);
             opacity: 0.1;
             animation: blob-animate 15s infinite alternate ease-in-out;
+
+            
+            
         }
 
         .blob:nth-child(2) {
