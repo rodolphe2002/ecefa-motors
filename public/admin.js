@@ -2,7 +2,7 @@
 // const BASE_URL = "https://ecefa-motors.onrender.com";
 
 const BASE_URL = window.location.hostname === "localhost"
-  ? "http://localhost:5000"
+  ? "http://localhost:4000"
   : "https://ecefa-motors.onrender.com";
 
 // === Gestion déconnexion ===
@@ -22,6 +22,16 @@ function translateProfileType(type) {
     case 'company': return 'Entreprise';
     case 'recruiter': return 'Recruteur';
     default: return '-';
+  }
+}
+
+// Choix de la classe CSS du badge selon le type
+function getTypeBadgeClass(type) {
+  switch (type) {
+    case 'learner': return 'type-badge type-learner';
+    case 'company': return 'type-badge type-company';
+    case 'recruiter': return 'type-badge type-recruiter';
+    default: return 'type-badge type-unknown';
   }
 }
 
@@ -115,7 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
   updateNotificationCount();
   loadContactMessages();
   loadUserProfiles();
-  setupMarkNotificationsRead?.();
+  window.setupMarkNotificationsRead?.();
   updateMonthlyGrowth();
 
   setInterval(updateNotificationCount, 30000);
@@ -144,7 +154,7 @@ function updateNotificationCount() {
 
 // === Charger dynamiquement les profils ===
 function loadUserProfiles() {
-  fetch(`${BASE_URL}/api/profiles`)
+  fetch(`${BASE_URL}/api/profiles?limit=5`)
     .then(res => res.json())
     .then(data => {
       const tbody = document.getElementById('profilesBody');
@@ -160,7 +170,7 @@ function loadUserProfiles() {
           <td>${profile.name || '-'}</td>
           <td>${profile.phone || '-'}</td>
           <td>${profile.email || '-'}</td>
-          <td><span class="status pending">${translateProfileType(profile.profileType)}</span></td>
+          <td><span class="${getTypeBadgeClass(profile.profileType)}">${translateProfileType(profile.profileType)}</span></td>
           <td>${profile.extraInfo || '-'}</td>
           <td>
             <button class="action-btn"><i class="fas fa-eye"></i></button>
@@ -179,7 +189,7 @@ function loadUserProfiles() {
 
 // === Charger les messages de contact ===
 function loadContactMessages() {
-  fetch(`${BASE_URL}/api/contact-messages`)
+  fetch(`${BASE_URL}/api/contact-messages?limit=5`)
     .then(res => res.json())
     .then(data => {
       const tbody = document.querySelector('.data-table.messages tbody');

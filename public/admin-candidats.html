@@ -3,35 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Liste des candidats</title>
-  <link rel="stylesheet" href="admin-candidats.css" />
+  <title>Administration - Candidats</title>
+  <link rel="stylesheet" href="./admin.css" />
+  <link rel="stylesheet" href="./admin-candidats.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Liste des candidats</h1>
-    <input type="text" id="searchInput" placeholder="Rechercher un nom, email..." />
+  <header class="header">
+    <div class="header-left">
+      <a href="/admin.html" class="logo">ECEFA Admin</a>
+    </div>
+    <div class="header-right">
+      <a class="btn" href="/admin.html"><i class="fas fa-arrow-left"></i> Dashboard</a>
+    </div>
+  </header>
 
-    <select id="filterSexe">
-      <option value="">Tous les types</option>
-      <option value="Apprenant">Apprenant</option>
-      <option value="Recruteur">Recruteur</option>
-      <option value="Recruteur">Entreprise</option>
-    </select>
+  <main class="container">
+    <section class="data-section">
+      <div class="section-header">
+        <h2><i class="fas fa-users"></i> Tous les candidats</h2>
+        <button id="bulkDeleteBtn" class="btn danger" aria-label="Supprimer les candidats sélectionnés"><i class="fas fa-trash"></i> Supprimer sélection</button>
+      </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Téléphone</th>
-          <th>Email</th>
-          <th>Type</th>
-          <th>Infos Supplémentaires</th>
-        </tr>
-      </thead>
-      <tbody id="candidatTableBody"></tbody>
-    </table>
-  </div>
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Rechercher un nom, email..." />
+        <select id="filterSexe">
+          <option value="">Tous les types</option>
+          <option value="Apprenant">Apprenant</option>
+          <option value="Recruteur">Recruteur</option>
+          <option value="Entreprise">Entreprise</option>
+        </select>
+      </div>
 
+      <div class="export-actions" style="display:flex; gap:10px; align-items:center; margin:10px 0; flex-wrap: wrap;">
+        <button id="printAllBtn" class="btn" aria-label="Imprimer tous les candidats"><i class="fas fa-print"></i> Imprimer tout</button>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <select id="printTypeSelect" aria-label="Choisir un type à imprimer">
+            <option value="">Choisir un type…</option>
+            <option value="Apprenant">Apprenant</option>
+            <option value="Recruteur">Recruteur</option>
+            <option value="Entreprise">Entreprise</option>
+          </select>
+          <button id="printByTypeBtn" class="btn" aria-label="Imprimer par type"><i class="fas fa-filter"></i> Imprimer par type</button>
+        </div>
+        <button id="printSelectedBtn" class="btn" aria-label="Imprimer la sélection"><i class="fas fa-check-square"></i> Imprimer sélection</button>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="selectAll" aria-label="Sélectionner tous les candidats"></th>
+              <th>Nom</th>
+              <th>Téléphone</th>
+              <th>Email</th>
+              <th>Type</th>
+              <th>Infos Supplémentaires</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="candidatTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
   <script src="admin-candidats.js"></script>
 </body>
 </html>

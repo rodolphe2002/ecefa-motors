@@ -3,10 +3,20 @@
 
 
 const BASE_URL = window.location.hostname === "localhost"
-  ? "http://localhost:5000"
+  ? "http://localhost:4000"
   : "https://ecefa-motors.onrender.com";
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Perf: lazy-load non-critical images and set decoding
+  const imgs = document.querySelectorAll('img');
+  imgs.forEach((img) => {
+    const isHighPriority = img.getAttribute('fetchpriority') === 'high';
+    if (!isHighPriority) {
+      if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+    }
+    if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+  });
+
   // Animations GSAP
   gsap.registerPlugin(ScrollTrigger);
 
@@ -52,9 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
+    function toggleMenu() {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      const next = !expanded;
+      hamburger.setAttribute('aria-expanded', String(next));
+      hamburger.classList.toggle('active', next);
+      navLinks.classList.toggle('active', next);
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
     });
   }
 
@@ -209,13 +230,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-welcome-btn');
   const closeIcon = document.querySelector('.close-welcome');
 
-  // Affiche automatiquement le popup à l'ouverture de la page
-  popup.style.display = 'flex';
+  if (!popup) return;
 
-  function closePopup() {
-    popup.style.display = 'none';
+  // Afficher uniquement au tout premier chargement
+  const hasShown = localStorage.getItem('welcomePopupShown') === 'true';
+  if (!hasShown) {
+    popup.classList.remove('hidden');
+    // Mémoriser pour ne plus le réafficher aux prochaines visites
+    localStorage.setItem('welcomePopupShown', 'true');
+    // Gérer le focus initial dans le popup
+    popup.setAttribute('aria-hidden', 'false');
+    const focusTarget = closeIcon || closeBtn || popup;
+    focusTarget.focus && focusTarget.focus();
   }
 
-  closeBtn.addEventListener('click', closePopup);
-  closeIcon.addEventListener('click', closePopup);
+  function closePopup() {
+    popup.classList.add('hidden');
+    popup.setAttribute('aria-hidden', 'true');
+  }
+
+  closeBtn && closeBtn.addEventListener('click', closePopup);
+  closeIcon && closeIcon.addEventListener('click', closePopup);
+  document.addEventListener('keydown', (e) => {
+    if (popup && !popup.classList.contains('hidden') && e.key === 'Escape') {
+      closePopup();
+    }
+  });
 });

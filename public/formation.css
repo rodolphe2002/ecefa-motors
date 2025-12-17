@@ -1,5 +1,5 @@
         :root {
-            --primary: #ff6e00;
+            --primary: red;
             --primary-dark: #084b8a;
              --secondary: #0a66c2;
             --accent: #ffab00;
@@ -140,7 +140,11 @@
             position: relative;
             overflow: hidden;
             padding: 0 5%;
-            background: linear-gradient(135deg, rgba(10, 102, 194, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            /* Nouveau fond : image de bannière formations */
+            background-image: linear-gradient(rgba(139, 0, 0, 0.55), rgba(139, 0, 0, 0.55)), url("./img/banniere-formation.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             margin-top: 80px;
             padding-bottom: 50px;
         }
@@ -158,11 +162,11 @@
             line-height: 1.2;
             margin-bottom: 1.5rem;
             font-family: 'Montserrat', sans-serif;
-            color: var(--dark);
+            color: #ffffff;
         }
 
         .hero-training h1 span {
-            color: var(--primary);
+            color: #ffffff;
             position: relative;
         }
 
@@ -173,15 +177,20 @@
             left: 0;
             width: 100%;
             height: 15px;
-            background: rgba(10, 102, 194, 0.15);
+            background: rgba(0, 0, 0, 0.35);
             z-index: -1;
         }
 
         .hero-training p {
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            color: var(--gray);
+            color: #ffffff;
             max-width: 600px;
+        }
+
+        /* Sous-titre de la bannière */
+        .hero-training h2 {
+            color: #ffffff;
         }
 
         .hero-buttons {
@@ -238,54 +247,13 @@
             border: 2px solid var(--primary);
         }
 
-        /* Blob Animation */
+        /* Blob Animation (désactivée sur la bannière) */
         .blob-container {
-            position: absolute;
-            top: 50%;
-            right: 5%;
-            transform: translateY(-50%);
-            width: 500px;
-            height: 500px;
-            z-index: 1;
-
-         
-            
-           
+            display: none;
         }
 
-          .blob {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--primary) 100%);
-            filter: blur(0);
-            opacity: 0.1;
-            animation: blob-animate 15s infinite alternate ease-in-out;
-
-            
-            
-        }
-
-        .blob:nth-child(2) {
-            animation-delay: -5s;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--primary) 100%);
-            width: 90%;
-            height: 90%;
-            filter: blur(0);
-            opacity: 0.15;
-        }
-
-        .blob:nth-child(3) {
-            animation-delay: -10s;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--primary) 100%);
-            width: 80%;
-            height: 80%;
-            filter: blur(0);
-            opacity: 0.2;
+        .blob {
+            display: none;
         }
 
         /* Formations Section */
@@ -302,19 +270,21 @@
             position: relative;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
+        .advantages-section .section-title h2 {
+            font-size: 2.8rem;
             font-weight: 800;
-            color: var(--dark);
+            color: white;
             font-family: 'Montserrat', sans-serif;
             margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--gray);
+        .advantages-section .section-title p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
             margin: 0 auto;
+            font-weight: 400;
         }
 
         .training-grid {
@@ -326,16 +296,20 @@
         }
 
         .training-card {
-            background: white;
-            border-radius: var(--radius);
+            /* Style carte type review vidéo : fond sombre rouge/orangé + image plein écran */
+            background: radial-gradient(circle at top, #ff7a3c 0%, #4a1505 45%, #050203 100%);
+            border-radius: 0;
+            border: 1px solid rgba(255, 122, 60, 0.7);
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
             transition: var(--transition);
             transform-style: preserve-3d;
             perspective: 1000px;
             position: relative;
             transform: translateY(30px);
             opacity: 0;
+            min-height: 360px;
+            color: #ffffff;
         }
 
         .training-card::before {
@@ -351,6 +325,19 @@
             transition: var(--transition);
         }
 
+        .training-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.6) 40%,
+                rgba(0, 0, 0, 0.25) 70%,
+                rgba(0, 0, 0, 0.0) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .training-card:hover {
             transform: translateY(-10px) rotateY(5deg);
             box-shadow: var(--shadow-hover);
@@ -361,9 +348,9 @@
         }
 
         .card-image {
-            height: 200px;
+            position: absolute;
+            inset: 0;
             overflow: hidden;
-            position: relative;
         }
 
         .card-image img {
@@ -390,26 +377,47 @@
         }
 
         .card-content {
+            position: relative;
+            z-index: 2;
             padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: none;
         }
 
         .card-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
             font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            line-height: 1.3;
         }
 
         .card-content p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 1.8rem;
             min-height: 80px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .card-content .btn {
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            width: 100%;
+            padding: 0.8rem 1.8rem;
+            font-size: 1.05rem;
+            width: auto;
+            align-self: flex-start;
             justify-content: center;
+            background: var(--primary);
+            border: 2px solid white;
+            font-weight: 600;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.4s ease;
@@ -418,13 +426,19 @@
         .training-card:hover .card-content .btn {
             opacity: 1;
             transform: translateY(0);
+            background: white;
+            color: var(--primary);
+            border-color: white;
         }
 
         /* Avantages Section */
         .advantages-section {
             padding: 6rem 5%;
-            background: white;
-            position: relative;
+            background-image: url("./img/avantage.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
         }
 
         .advantages-grid {
@@ -436,47 +450,52 @@
         }
 
         .advantage-card {
-            background: var(--light);
-            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
             padding: 2.5rem;
             text-align: center;
             transition: var(--transition);
-            transform: translateY(30px);
-            opacity: 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .advantage-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
         .advantage-icon {
             width: 80px;
             height: 80px;
-            background: rgba(10, 102, 194, 0.1);
+            background: #f0f0f0;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin: 0 auto 1.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
             transition: var(--transition);
+            border: 2px solid #e0e0e0;
         }
 
         .advantage-icon i {
             font-size: 2.5rem;
-            color: var(--primary);
+            color: #666;
             transition: var(--transition);
         }
 
         .advantage-card:hover .advantage-icon {
-            background: var(--primary);
+            background: #e8e8e8;
+            transform: rotate(10deg);
+            border-color: #d0d0d0;
         }
 
         .advantage-card:hover .advantage-icon i {
-            color: white;
+            color: var(--primary);
             transform: scale(1.2);
         }
 
@@ -484,17 +503,21 @@
             font-size: 1.5rem;
             margin-bottom: 1rem;
             font-family: 'Montserrat', sans-serif;
+            color: #333;
         }
 
         .advantage-card p {
-            color: var(--gray);
+            color: #666;
+            line-height: 1.6;
         }
 
         /* Process Section */
         .process-section {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, rgba(10, 102, 194, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
             position: relative;
+            background-color: #f8f9fa;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d1d5db' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            overflow: hidden;
         }
 
         .process-container {
@@ -595,8 +618,22 @@
         /* Testimonials Section */
         .testimonials-section {
             padding: 6rem 5%;
-            background: white;
+            background: none;
+            background-image: url("./img/temoignage.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             position: relative;
+        }
+
+        .testimonials-section .section-title h2 {
+            color: #ffffff;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+        }
+
+        .testimonials-section .section-title p {
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .testimonials-container {
@@ -612,7 +649,7 @@
         }
 
         .testimonial-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.92);
             border-radius: var(--radius);
             padding: 3rem;
             box-shadow: var(--shadow);
@@ -686,10 +723,10 @@
             line-height: 1;
         }
 
-        .swiper-button-next, 
-        .swiper-button-prev {
-            color: var(--primary);
-            background: rgba(10, 102, 194, 0.1);
+        .testimonials-section .swiper-button-next, 
+        .testimonials-section .swiper-button-prev {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -697,17 +734,17 @@
             transition: var(--transition);
         }
 
-        .swiper-button-next:hover, 
-        .swiper-button-prev:hover {
-            background: var(--primary);
-            color: white;
+        .testimonials-section .swiper-button-next:hover, 
+        .testimonials-section .swiper-button-prev:hover {
+            background: rgba(139, 0, 0, 0.9);
+            color: #fff;
         }
 
         /* CTA Section */
         .cta-section {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
+            background: #f8f9fb; /* fond clair minimaliste */
+            color: #212529;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -718,6 +755,16 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+        }
+
+        .cta-content h2 {
+            color: #111827;
+            text-shadow: none;
+        }
+
+        .cta-content p {
+            color: #4b5563;
+            text-shadow: none;
         }
 
         .cta-content h2 {
@@ -760,20 +807,16 @@
         }
 
         .cta-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
-            background-size: 20px 20px;
-            opacity: 0.3;
-            z-index: 1;
+            display: none; /* pattern désactivé pour un rendu plus épuré */
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(to bottom, #4b4b4a 0%, #232528 100%);
+            background: none;
+            background-image: linear-gradient(rgba(139, 0, 0, 0.6), rgba(139, 0, 0, 0.65)), url("./img/footer.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: white;
             padding: 5rem 5% 2rem;
             position: relative;

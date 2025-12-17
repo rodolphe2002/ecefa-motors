@@ -54,6 +54,58 @@ a {
   gap: 10px;
 }
 
+/* === Toast notifications === */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  min-width: 260px;
+  max-width: 360px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: toast-in 200ms ease forwards;
+}
+
+.toast.success { background: #2ecc71; }
+.toast.error { background: #e74c3c; }
+.toast.info { background: #2f79e0; }
+
+.toast .toast-icon { font-size: 1.1rem; line-height: 1; }
+.toast .toast-message { flex: 1; font-weight: 500; }
+.toast .toast-close {
+  background: transparent; border: none; color: #fff; cursor: pointer; opacity: 0.9;
+}
+.toast .toast-close:hover { opacity: 1; }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toast-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+/* Dark mode adjustments for toasts */
+body.dark .toast.info { background: #2467c4; }
+body.dark .toast.success { background: #27ae60; }
+body.dark .toast.error { background: #c0392b; }
+
 .logo-icon i {
   font-size: 1.8rem;
   color: #f7c942;
@@ -203,8 +255,51 @@ a {
   margin-left: 5px;
 }
 
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: #3f8efc;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.02s ease;
+}
+
+.btn:hover { background: #2f79e0; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn.secondary {
+  background: #f0f2f5;
+  color: #202b3b;
+  border-color: #e0e0e0;
+}
+.btn.secondary:hover { background: #e4e7ec; }
+
+.btn.danger {
+  background: #e74c3c;
+}
+.btn.danger:hover { background: #c0392b; }
+
+.btn.small {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+}
+
 /* === Table === */
 .table-container {
+  overflow-x: auto;
+}
+
+/* Match HTML wrapper used on pages like admin-messages.html */
+.table-wrapper {
   overflow-x: auto;
 }
 
@@ -216,6 +311,27 @@ a {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
+/* Messages table: stabilize columns */
+.data-table.messages {
+  table-layout: fixed; /* prevent layout jumps, use fixed widths */
+}
+
+/* Col widths: [check][name][subject][phone][message][date][actions] */
+.data-table.messages thead th:nth-child(1),
+.data-table.messages tbody td:nth-child(1) { width: 44px; text-align: center; }
+.data-table.messages thead th:nth-child(2),
+.data-table.messages tbody td:nth-child(2) { width: 240px; }
+.data-table.messages thead th:nth-child(3),
+.data-table.messages tbody td:nth-child(3) { width: 220px; }
+.data-table.messages thead th:nth-child(4),
+.data-table.messages tbody td:nth-child(4) { width: 150px; white-space: nowrap; }
+.data-table.messages thead th:nth-child(5),
+.data-table.messages tbody td:nth-child(5) { width: auto; }
+.data-table.messages thead th:nth-child(6),
+.data-table.messages tbody td:nth-child(6) { width: 130px; white-space: nowrap; }
+.data-table.messages thead th:nth-child(7),
+.data-table.messages tbody td:nth-child(7) { width: 110px; text-align: center; }
 
 .data-table th,
 .data-table td {
@@ -237,6 +353,27 @@ a {
   border-bottom: none;
 }
 
+/* Checkbox column for selection tables */
+.data-table thead th:first-child,
+.data-table tbody td:first-child {
+  width: 44px;
+  text-align: center;
+}
+
+/* Ensure checkboxes are visible and consistent across browsers */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #3f8efc; /* modern browsers */
+}
+
+/* Make inline action buttons consistent */
+.data-table .btn {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+}
+
 .status {
   padding: 6px 12px;
   border-radius: 15px;
@@ -248,6 +385,27 @@ a {
 .status.new { background: #3f8efc20; color: #3f8efc; }
 .status.contacted { background: #ffaa2b20; color: #ffaa2b; }
 .status.pending { background: #ff4d4d20; color: #ff4d4d; }
+
+/* === Type badges (profile types) === */
+.type-badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-block;
+  letter-spacing: 0.2px;
+}
+
+.type-learner { background: rgba(67, 97, 238, 0.12); color: #4361ee; }
+.type-recruiter { background: rgba(239, 83, 80, 0.12); color: #e74c3c; }
+.type-company { background: rgba(46, 204, 113, 0.12); color: #2ecc71; }
+.type-unknown { background: rgba(158, 158, 158, 0.15); color: #616161; }
+
+/* === Type badges - dark mode === */
+body.dark .type-learner { background: rgba(67, 97, 238, 0.25); color: #90caf9; }
+body.dark .type-recruiter { background: rgba(239, 83, 80, 0.25); color: #ef9a9a; }
+body.dark .type-company { background: rgba(46, 204, 113, 0.25); color: #a5d6a7; }
+body.dark .type-unknown { background: rgba(158, 158, 158, 0.25); color: #bdbdbd; }
 
 .action-btn {
   background: transparent;
@@ -263,7 +421,7 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 300px;
+  max-width: 100%;
 }
 
 /* === Footer === */
@@ -351,9 +509,23 @@ body.dark .action-btn {
   color: #90caf9;
 }
 
+/* Buttons - dark mode */
+body.dark .btn { background: #2f79e0; color: #fff; border-color: transparent; }
+body.dark .btn:hover { background: #2467c4; }
+body.dark .btn.secondary { background: #2a2a2a; color: #e0e0e0; border-color: #3a3a3a; }
+body.dark .btn.secondary:hover { background: #333; }
+body.dark .btn.danger { background: #c0392b; }
+body.dark .btn.danger:hover { background: #a93226; }
+
 body.dark .status.new { background: #1565c040; color: #90caf9; }
 body.dark .status.contacted { background: #ffa72640; color: #ffb74d; }
 body.dark .status.pending { background: #ef535040; color: #ef5350; }
+
+/* Type badges - dark mode */
+body.dark .type-learner { background: rgba(67, 97, 238, 0.25); color: #90caf9; }
+body.dark .type-recruiter { background: rgba(239, 83, 80, 0.25); color: #ef9a9a; }
+body.dark .type-company { background: rgba(46, 204, 113, 0.25); color: #a5d6a7; }
+body.dark .type-unknown { background: rgba(158, 158, 158, 0.25); color: #bdbdbd; }
 
 body.dark #themeToggle i {
   color: #ffeb3b;

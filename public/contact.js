@@ -83,14 +83,25 @@ const BASE_URL = window.location.hostname === "localhost"
                 }
             });
             
-            // Hamburger menu toggle
+            // Hamburger menu toggle (with ARIA)
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
-            
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
+            function toggleMenu() {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                const next = !expanded;
+                hamburger.setAttribute('aria-expanded', String(next));
+                hamburger.classList.toggle('active', next);
+                navLinks.classList.toggle('active', next);
+            }
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', toggleMenu);
+                hamburger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleMenu();
+                    }
+                });
+            }
             
             // Form validation
             const contactForm = document.getElementById('contactForm');
@@ -101,9 +112,11 @@ const BASE_URL = window.location.hostname === "localhost"
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Reset errors
+                // Reset errors and aria-invalid
                 document.querySelectorAll('.form-group').forEach(group => {
                     group.classList.remove('error');
+                    const control = group.querySelector('.form-control');
+                    control && control.setAttribute('aria-invalid', 'false');
                 });
                 
                 let isValid = true;
@@ -112,6 +125,7 @@ const BASE_URL = window.location.hostname === "localhost"
                 const name = document.getElementById('name');
                 if (!name.value.trim()) {
                     name.parentElement.classList.add('error');
+                    name.setAttribute('aria-invalid', 'true');
                     isValid = false;
                 }
                 
@@ -120,6 +134,7 @@ const BASE_URL = window.location.hostname === "localhost"
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!email.value.trim() || !emailRegex.test(email.value)) {
                     email.parentElement.classList.add('error');
+                    email.setAttribute('aria-invalid', 'true');
                     isValid = false;
                 }
                 
@@ -127,6 +142,7 @@ const BASE_URL = window.location.hostname === "localhost"
                 const phone = document.getElementById('phone');
                 if (!phone.value.trim()) {
                     phone.parentElement.classList.add('error');
+                    phone.setAttribute('aria-invalid', 'true');
                     isValid = false;
                 }
                 
@@ -134,6 +150,7 @@ const BASE_URL = window.location.hostname === "localhost"
                 const subject = document.getElementById('subject');
                 if (!subject.value) {
                     subject.parentElement.classList.add('error');
+                    subject.setAttribute('aria-invalid', 'true');
                     isValid = false;
                 }
                 
@@ -141,15 +158,9 @@ const BASE_URL = window.location.hostname === "localhost"
                 const message = document.getElementById('message');
                 if (!message.value.trim()) {
                     message.parentElement.classList.add('error');
+                    message.setAttribute('aria-invalid', 'true');
                     isValid = false;
                 }
-                
-                // Validate reCAPTCHA
-                // const recaptcha = grecaptcha.getResponse();
-                // if (recaptcha.length === 0) {
-                //     alert("Veuillez compléter le reCAPTCHA");
-                //     isValid = false;
-                // }
                 
                 if (isValid) {
                     // Show loader
@@ -169,23 +180,23 @@ const BASE_URL = window.location.hostname === "localhost"
   })
 })
 .then(response => response.json())
-.then(data => {
-  loader.style.display = 'none';
-  submitBtn.textContent = 'Envoyer';
-  successMessage.style.display = 'block';
-  contactForm.reset();
-  grecaptcha.reset();
+  .then(data => {
+    loader.style.display = 'none';
+    submitBtn.textContent = 'Envoyer';
+    successMessage.style.display = 'block';
+    contactForm.reset();
+    // Move focus to success message for SRs
+    successMessage.focus && successMessage.focus();
 
-  setTimeout(() => {
-    successMessage.style.display = 'none';
-  }, 5000);
-})
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 5000);
+  })
 .catch(error => {
   loader.style.display = 'none';
   submitBtn.textContent = 'Envoyer';
   alert("Erreur lors de l'envoi du message. Veuillez réessayer.");
 });
-
                 }
             });
         });

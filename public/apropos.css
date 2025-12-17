@@ -1,5 +1,5 @@
     :root {
-             --primary: #ff6e00;
+             --primary: red;
 
             --primary-dark: #084b8a;
             --secondary: #0a66c2;
@@ -135,58 +135,80 @@
 
         /* Hero Section */
         .about-hero {
-            height: 100vh;
+            min-height: 65vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
             position: relative;
             overflow: hidden;
-            padding: 0 5%;
-            background: linear-gradient(135deg, rgba(10, 102, 194, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
-            margin-top: 80px;
+            padding: 140px 5% 120px;
+            margin-top: 0;
+            background-image: linear-gradient(rgba(139, 0, 0, 0.45), rgba(139, 0, 0, 0.45)), url("./img/banniere-apropos.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .hero-content {
-            max-width: 650px;
+            max-width: 750px;
+            width: 100%;
             z-index: 2;
             transform: translateY(20px);
             opacity: 0;
+            text-align: center;
         }
 
         .about-hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+            line-height: 1.25;
+            margin-bottom: 1.2rem;
             font-family: 'Montserrat', sans-serif;
-            color: var(--dark);
+            color: #ffffff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
         }
 
         .about-hero h1 span {
-            color: var(--primary);
+            color: #ffcd38;
             position: relative;
         }
 
         .about-hero h1 span::after {
             content: '';
             position: absolute;
-            bottom: 10px;
+            bottom: 6px;
             left: 0;
             width: 100%;
-            height: 15px;
-            background: rgba(10, 102, 194, 0.15);
+            height: 12px;
+            background: rgba(0, 0, 0, 0.25);
             z-index: -1;
         }
 
+        .about-hero h2 {
+            color: rgba(255, 255, 255, 0.96);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .about-hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: var(--gray);
-            max-width: 600px;
+            font-size: 1.05rem;
+            margin-bottom: 2.2rem;
+            color: rgba(255, 255, 255, 0.96);
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .hero-buttons {
             display: flex;
             gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -240,45 +262,7 @@
 
         /* Blob Animation */
         .blob-container {
-            position: absolute;
-            top: 50%;
-            right: 5%;
-            transform: translateY(-50%);
-            width: 500px;
-            height: 500px;
-            z-index: 1;
-        }
-
-        .blob {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--primary) 100%);
-            filter: blur(0);
-            opacity: 0.1;
-            animation: blob-animate 15s infinite alternate ease-in-out;
-        }
-
-        .blob:nth-child(2) {
-            animation-delay: -5s;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--primary) 100%);
-            width: 90%;
-            height: 90%;
-            filter: blur(0);
-            opacity: 0.15;
-        }
-
-        .blob:nth-child(3) {
-            animation-delay: -10s;
-            background: linear-gradient(45deg, var(--primary) 0%, var(--primary) 100%);
-            width: 80%;
-            height: 80%;
-            filter: blur(0);
-            opacity: 0.2;
+            display: none;
         }
 
         /* Timeline Section */
@@ -375,17 +359,17 @@
         }
 
         .timeline-content {
-            background: white;
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
+            background: transparent;
+            border-radius: 0;
+            padding: 2.5rem 0;
+            box-shadow: none;
             transition: var(--transition);
             position: relative;
         }
 
         .timeline-item:hover .timeline-content {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            transform: none;
+            box-shadow: none;
         }
 
         .timeline-item:hover .timeline-year {
@@ -413,7 +397,7 @@
 
         .mission-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -421,7 +405,7 @@
 
         .mission-card {
             background: white;
-            border-radius: var(--radius);
+            border-radius: 0;
             padding: 2.5rem;
             text-align: center;
             box-shadow: var(--shadow);
@@ -474,6 +458,103 @@
             color: var(--gray);
         }
 
+        /* Mise en page spécifique Formation de Qualité (desktop) */
+        .mission-card-quality {
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            grid-column: 1 / -1;
+            min-height: 320px;
+        }
+
+        /* Supprimer l’icône et le hover de type carte pour Formation de Qualité */
+        .mission-card-quality .mission-icon {
+            display: none;
+        }
+
+        .mission-card-quality:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .mission-card-quality .mission-quality-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mission-quality-image img {
+            width: 100%;
+            border-radius: 0;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+        }
+
+        /* Mise en page spécifique Sécurité Avant Tout (base) */
+        .mission-card-security {
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            grid-column: 1 / -1;
+            min-height: 320px;
+        }
+
+        .mission-card-security .mission-icon {
+            display: none;
+        }
+
+        .mission-card-security:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .mission-card-security .mission-security-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mission-security-image img {
+            width: 100%;
+            border-radius: 0;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+        }
+
+        /* Mise en page spécifique Évolution Continue (base) */
+        .mission-card-evolution {
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            grid-column: 1 / -1;
+            min-height: 320px;
+        }
+
+        .mission-card-evolution .mission-icon {
+            display: none;
+        }
+
+        .mission-card-evolution:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .mission-card-evolution .mission-evolution-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mission-evolution-image img {
+            width: 100%;
+            border-radius: 0;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+        }
+
         /* Team Section */
         .team-section {
             padding: 6rem 5%;
@@ -487,6 +568,137 @@
             gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
+            justify-items: center;
+        }
+
+        .card-client {
+            background: var(--primary);
+            width: 13rem;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border: 4px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+            transition: all 0.3s ease;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .card-client:hover {
+            transform: translateY(-10px);
+        }
+
+        .user-picture {
+            overflow: hidden;
+            object-fit: cover;
+            width: 5rem;
+            height: 5rem;
+            border: 4px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .user-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .name-client {
+            margin: 0;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .name-client span {
+            display: block;
+            font-weight: 200;
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .client-description {
+            margin: 14px 0 0;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .social-media:before {
+            content: " ";
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .social-media a {
+            position: relative;
+            margin-right: 15px;
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-media a:last-child {
+            margin-right: 0;
+        }
+
+        .social-media a i {
+            font-size: 1.1rem;
+        }
+
+        /*-- Tooltip Social Media --*/
+        .tooltip-social {
+            background: #262626;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            padding: 0.5rem 0.4rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -90%);
+            transition: all 0.2s ease;
+            z-index: 1;
+            white-space: nowrap;
+        }
+
+        .tooltip-social:after {
+            content: " ";
+            position: absolute;
+            bottom: 1px;
+            left: 50%;
+            border: solid;
+            border-width: 10px 10px 0 10px;
+            border-color: transparent;
+            transform: translate(-50%, 100%);
+        }
+
+        .social-media a .tooltip-social:after {
+            border-top-color: #262626;
+        }
+
+        .social-media a:hover .tooltip-social {
+            opacity: 1;
+            transform: translate(-50%, -130%);
         }
 
         .team-card {
@@ -715,7 +927,11 @@
 
         /* Footer */
         footer {
-            background: linear-gradient(to bottom, #4b4b4a 0%, #232528 100%);
+            background: none;
+            background-image: linear-gradient(rgba(139, 0, 0, 0.6), rgba(139, 0, 0, 0.65)), url("./img/footer.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: white;
             padding: 5rem 5% 2rem;
             position: relative;
@@ -810,15 +1026,11 @@
             max-width: 1200px;
             margin: 0 auto;
             color: rgba(255, 255, 255, 0.5);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .footer-links {
-            display: flex;
-            gap: 1.5rem;
+            display: block;
+            text-align: center;
         }
 
         .footer-links a {
@@ -956,6 +1168,59 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            /* Mission cards: image en arrière-plan + texte au-dessus (mobile) */
+            .mission-card-quality,
+            .mission-card-security,
+            .mission-card-evolution {
+                position: relative;
+                overflow: hidden;
+                border-radius: 0;
+                padding: 2.5rem 1.8rem;
+                min-height: 320px;
+                color: #ffffff;
+            }
+
+            .mission-card-quality {
+                background: linear-gradient(140deg, rgba(0,0,0,0.65), rgba(0,0,0,0.4)),
+                            url("./img/formation-qualite.jpg") center/cover no-repeat;
+            }
+
+            .mission-card-security {
+                background: linear-gradient(140deg, rgba(0,0,0,0.65), rgba(0,0,0,0.4)),
+                            url("./img/securite.jpg") center/cover no-repeat;
+            }
+
+            .mission-card-evolution {
+                background: linear-gradient(140deg, rgba(0,0,0,0.65), rgba(0,0,0,0.4)),
+                            url("./img/evolution.jpg") center/cover no-repeat;
+            }
+
+            /* On masque les blocs image internes pour éviter la répétition */
+            .mission-quality-image,
+            .mission-security-image,
+            .mission-evolution-image {
+                display: none;
+            }
+
+            .mission-quality-text,
+            .mission-security-text,
+            .mission-evolution-text {
+                color: #ffffff;
+            }
+
+            .mission-card-quality h3,
+            .mission-card-security h3,
+            .mission-card-evolution h3 {
+                color: #ffffff;
+                margin-bottom: 1rem;
+            }
+
+            .mission-card-quality p,
+            .mission-card-security p,
+            .mission-card-evolution p {
+                color: rgba(255,255,255,0.92);
+            }
         }
 
         @media (max-width: 576px) {
@@ -977,6 +1242,62 @@
             
             .team-grid, .mission-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .mission-card-quality {
+                text-align: left;
+            }
+
+            .mission-card-quality .mission-quality-inner {
+                flex-direction: row;
+                align-items: center;
+                gap: 3rem;
+            }
+
+            .mission-quality-text {
+                flex: 1.2;
+            }
+
+            .mission-quality-image {
+                flex: 1;
+            }
+
+            .mission-card-security {
+                text-align: left;
+            }
+
+            .mission-card-security .mission-security-inner {
+                flex-direction: row;
+                align-items: center;
+                gap: 3rem;
+            }
+
+            .mission-security-image {
+                flex: 1;
+            }
+
+            .mission-security-text {
+                flex: 1.2;
+            }
+
+            .mission-card-evolution {
+                text-align: left;
+            }
+
+            .mission-card-evolution .mission-evolution-inner {
+                flex-direction: row;
+                align-items: center;
+                gap: 3rem;
+            }
+
+            .mission-evolution-text {
+                flex: 1.2;
+            }
+
+            .mission-evolution-image {
+                flex: 1;
             }
         }
 

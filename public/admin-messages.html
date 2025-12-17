@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration - Messages</title>
+  <meta name="description" content="Interface d'administration ECEFA - Lecture des messages de contact.">
+  <link rel="canonical" href="/admin-messages.html">
+  <meta name="theme-color" content="#0a66c2">
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <link rel="stylesheet" href="./admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <header class="header">
+    <div class="header-left">
+      <a href="/admin.html" class="logo">ECEFA Admin</a>
+    </div>
+    <div class="header-right">
+      <a class="btn" href="/admin.html"><i class="fas fa-arrow-left"></i> Dashboard</a>
+    </div>
+  </header>
+
+  <main class="container" id="main-content">
+    <section class="data-section">
+      <div class="section-header">
+        <h2><i class="fas fa-envelope"></i> Tous les messages</h2>
+        <button id="bulkDeleteMessages" class="btn danger" aria-label="Supprimer les messages sélectionnés">
+          <i class="fas fa-trash"></i> Supprimer sélection
+        </button>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="data-table messages">
+          <caption class="sr-only">Liste de tous les messages reçus</caption>
+          <thead>
+            <tr>
+              <th scope="col"><input type="checkbox" id="selectAllMessages" aria-label="Sélectionner tous les messages"></th>
+              <th scope="col">Expéditeur</th>
+              <th scope="col">Sujet</th>
+              <th scope="col">Téléphone</th>
+              <th scope="col">Message</th>
+              <th scope="col">Date</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="messagesBody">
+            <tr><td colspan="7">Chargement...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal lecture message -->
+  <div id="messageModal" class="message-modal" style="display: none" role="dialog" aria-modal="true" aria-labelledby="messageModalTitle" tabindex="-1">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Fermer la fenêtre">&times;</button>
+      <h3 id="messageModalTitle">Message complet</h3>
+      <p id="fullMessageContent"></p>
+    </div>
+  </div>
+
+  <!-- Toast notifications -->
+  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="./admin-messages.js"></script>
+</body>
+</html>

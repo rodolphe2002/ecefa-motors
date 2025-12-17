@@ -4,30 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - ECEFA Motors</title>
+    <meta name="description" content="Contactez ECEFA Motors pour toute demande d'information, inscription aux formations ou partenariat.">
+    <link rel="canonical" href="/contact.html">
+    <meta name="theme-color" content="#0a66c2">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="./contact.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <!-- Header -->
     <!-- Header -->
    
     <header>
        <div class="logo">
-            <img src="./img/logo.jpg" alt="">
+            <img src="./img/logo.jpg" alt="Logo ECEFA Motors" width="64" height="64" decoding="async" fetchpriority="high">
 
         </div>
         
-        <div class="nav-links">
+        <div class="nav-links" id="primary-navigation">
             <a href="./index.html" >Accueil</a>
             <a href="./formation.html" >Formations</a>
             <a href="./contact.html" class="active">Contact</a>
             <a href="./apropos.html" >À propos</a>
         </div>
         
-        <div class="hamburger">
+        <div class="hamburger" role="button" tabindex="0" aria-controls="primary-navigation" aria-expanded="false" aria-label="Ouvrir le menu">
             <div></div>
             <div></div>
             <div></div>
@@ -35,7 +44,7 @@
     </header>
 
     <!-- Contact Hero -->
-    <section class="contact-hero">
+    <section class="contact-hero" id="main-content">
         <h1>LAISSEZ-NOUS UN MESSAGE</h1>
         <p>Nous serions ravis de vous entendre !</p>
     </section>
@@ -50,45 +59,41 @@
                     <div class="form-group">
                         <label for="name">Nom et prénom</label>
                         <i class="fas fa-user input-icon"></i>
-                        <input type="text" id="name" class="form-control" placeholder="Votre nom complet" required>
-                        <div class="error-message">Veuillez entrer votre nom</div>
+                        <input type="text" id="name" class="form-control" placeholder="Votre nom complet" required aria-describedby="name-error">
+                        <div class="error-message" id="name-error">Veuillez entrer votre nom</div>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Adresse e-mail</label>
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="email" class="form-control" placeholder="votre@email.com" required>
-                        <div class="error-message">Veuillez entrer une adresse email valide</div>
+                        <input type="email" id="email" class="form-control" placeholder="votre@email.com" required aria-describedby="email-error">
+                        <div class="error-message" id="email-error">Veuillez entrer une adresse email valide</div>
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Numéro de téléphone</label>
                         <i class="fas fa-phone input-icon"></i>
-                        <input type="tel" id="phone" class="form-control" placeholder="(+225) 00 00 00 00" required>
-                        <div class="error-message">Veuillez entrer un numéro de téléphone valide</div>
+                        <input type="tel" id="phone" class="form-control" placeholder="(+225) 00 00 00 00" required aria-describedby="phone-error">
+                        <div class="error-message" id="phone-error">Veuillez entrer un numéro de téléphone valide</div>
                     </div>
                     
                     <div class="form-group">
                         <label for="subject">Sélectionnez un sujet</label>
                         <i class="fas fa-tag input-icon"></i>
-                        <select id="subject" class="form-control" required>
+                        <select id="subject" class="form-control" required aria-describedby="subject-error">
                             <option value="" disabled selected>Choisir un sujet</option>
                             <option value="info">Demande d'information</option>
                             <option value="training">Inscription à une formation</option>
                             <option value="partnership">Demande de partenariat</option>
                             <option value="other">Autre</option>
                         </select>
-                        <div class="error-message">Veuillez sélectionner un sujet</div>
+                        <div class="error-message" id="subject-error">Veuillez sélectionner un sujet</div>
                     </div>
                     
                     <div class="form-group">
                         <label for="message">Laissez-nous un message...</label>
-                        <textarea id="message" class="form-control" placeholder="Écrivez votre message ici..." required></textarea>
-                        <div class="error-message">Veuillez écrire votre message</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6Lfz7OspAAAAAJT0mJbV3pRf8jQqXz4d8jQqXz4d"></div>
+                        <textarea id="message" class="form-control" placeholder="Écrivez votre message ici..." required aria-describedby="message-error"></textarea>
+                        <div class="error-message" id="message-error">Veuillez écrire votre message</div>
                     </div>
                     
                     <button type="submit" class="submit-btn">
@@ -97,7 +102,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </button>
                     
-                    <div class="success-message">
+                    <div class="success-message" role="status" aria-live="polite" tabindex="-1">
                         <i class="fas fa-check-circle"></i>
                         <h3>Message envoyé avec succès !</h3>
                         <p>Nous vous répondrons dans les plus brefs délais.</p>
@@ -161,7 +166,7 @@
     <!-- Map Section -->
     <section class="map-section">
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.005646098419!2d-4.008286625004838!3d5.321090295071659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ebc2f1b3a6f5%3A0x8d7e5b5b5b5b5b5b!2sTreichville%2C%20Abidjan%2C%20C%C3%B4te%20d&#39;Ivoire!5e0!3m2!1sfr!2sfr!4v1650000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
+            <iframe title="Carte des agences ECEFA Motors à Abidjan" width="600" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.005646098419!2d-4.008286625004838!3d5.321090295071659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ebc2f1b3a6f5%3A0x8d7e5b5b5b5b5b5b!2sTreichville%2C%20Abidjan%2C%20C%C3%B4te%20d&#39;Ivoire!5e0!3m2!1sfr!2sfr!4v1650000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
@@ -169,24 +174,43 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Liens utiles</h3>
+                <h3>Coordonnées</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Agence Treichville</h4>
+                            <p>Abidjan, Treichville, Côte d'Ivoire</p>
+                            <p>📞 25 21 00 24 02 / 07 58 18 75 21</p>
+                            <p>✉️ formations@ecfa.ci</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Agence Yopougon</h4>
+                            <p>Abidjan, Yopougon, Côte d'Ivoire</p>
+                            <p>📞 21 21 80 26 80 / 07 98 63 98 80 / 01 03 19 41 06</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Utiles</h3>
                 <a href="#">Accueil</a>
-                <a href="#">Services</a>
+                <a href="#">Formations</a>
                 <a href="#">À propos</a>
                 <a href="#">Contact</a>
+                <a href="#">Conditions Générales</a>
+                <a href="#">Politique de Confidentialité</a>
                 <a href="#">FAQ</a>
             </div>
             
             <div class="footer-column">
-                <h3>Agences</h3>
-                <a href="#">Treichville</a>
-                <a href="#">Yopougon</a>
-                <a href="#">Nos centres de formation</a>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Suivez-nous</h3>
-                <p>Restez connecté avec ECEFA Motors</p>
+                <h3>Réseaux Sociaux</h3>
+                <p>Suivez-nous pour rester informé de nos actualités et formations</p>
                 
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -200,15 +224,9 @@
         
         <div class="footer-bottom">
             <p>©2025 | ECEFA Motors. Tous droits réservés.</p>
-            <div class="footer-links">
-                <a href="#">FAQ</a>
-                <a href="#">Politique de Confidentialité</a>
-                <a href="#">Conditions Générales d'Utilisation</a>
-            </div>
         </div>
     </footer>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="./contact.js"></script>
 </body>
 </html>

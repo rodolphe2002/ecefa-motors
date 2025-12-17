@@ -22,10 +22,41 @@ router.post('/save-profile', async (req, res) => {
 
 router.get('/profiles', async (req, res) => {
     try {
-        const profiles = await UserProfile.find().sort({ createdAt: -1 });
+        const limit = req.query.limit ? parseInt(req.query.limit, 10) : undefined;
+        let query = UserProfile.find().sort({ createdAt: -1 });
+        if (!isNaN(limit) && limit > 0) {
+            query = query.limit(limit);
+        }
+        const profiles = await query;
         res.json(profiles);
     } catch (error) {
         res.status(500).json({ error: "Erreur lors de la récupération des profils" });
+    }
+});
+
+// Supprimer un profil par ID
+router.delete('/profiles/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleted = await UserProfile.findByIdAndDelete(id);
+        if (!deleted) return res.status(404).json({ error: 'Profil introuvable' });
+        res.json({ message: 'Profil supprimé' });
+    } catch (error) {
+        res.status(500).json({ error: 'Erreur lors de la suppression du profil' });
+    }
+});
+
+// Suppression multiple de profils
+router.post('/profiles/bulk-delete', async (req, res) => {
+    try {
+        const { ids } = req.body;
+        if (!Array.isArray(ids) || ids.length === 0) {
+            return res.status(400).json({ error: "Liste d'IDs invalide" });
+        }
+        const result = await UserProfile.deleteMany({ _id: { $in: ids } });
+        res.json({ message: 'Profils supprimés', deletedCount: result.deletedCount });
+    } catch (error) {
+        res.status(500).json({ error: 'Erreur lors de la suppression multiple' });
     }
 });
 

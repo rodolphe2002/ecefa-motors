@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
+const compression = require('compression');
 const Admin = require('./models/Admin');
 
 dotenv.config();
@@ -12,7 +13,12 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   'https://ecefa-motors-7q08eus2b-kouadio-bah-rodolphes-projects.vercel.app',
-  'http://localhost:5000' // utile en local
+  'http://localhost:5000', // utile en local
+  'http://localhost:4000',
+  'http://127.0.0.1:4000',
+  'http://127.0.0.1:5000',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000'
 ];
 
 // === CORS ===
@@ -37,6 +43,9 @@ app.use(cors({
 
 // Middleware pour lire JSON
 app.use(express.json());
+
+// Compression gzip pour améliorer les temps de chargement
+app.use(compression());
 
 const { MONGODB_URI, ADMIN_USERNAME, ADMIN_PASSWORD } = process.env;
 
@@ -73,7 +82,19 @@ const { router: adminRoute } = require('./routes/adminRoute');
 app.use('/api/admin', adminRoute);
 
 // === Fichiers statiques (frontend) ===
-app.use(express.static(path.join(__dirname, '..', 'public')));
+const staticDir = path.join(__dirname, '..', 'public');
+app.use(express.static(staticDir, {
+  maxAge: '7d',
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.html')) {
+      // Les pages HTML ne doivent pas être mises en cache longtemps
+      res.setHeader('Cache-Control', 'no-cache');
+    } else {
+      // Actifs statiques en cache côté client
+      res.setHeader('Cache-Control', 'public, max-age=604800'); // 7 jours
+    }
+  }
+}));
 
 // === Route principale ===
 app.get('/', (req, res) => {
