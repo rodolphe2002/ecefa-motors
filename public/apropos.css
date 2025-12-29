@@ -164,10 +164,22 @@
             font-size: 3rem;
             font-weight: 800;
             line-height: 1.25;
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem;
             font-family: 'Montserrat', sans-serif;
             color: #ffffff;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+        
+        .about-hero .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .about-hero h1 span {
@@ -375,6 +387,46 @@
         .timeline-item:hover .timeline-year {
             background: var(--secondary);
             transform: scale(1.1);
+        }
+
+        .timeline-section .section-title {
+            background: rgba(10, 102, 194, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-section .section-title h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .timeline-section .section-title h3.history-subtitle {
+            font-size: 1.6rem;
+            color: #fff;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .timeline-section .section-title p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .timeline-section .section-title p.history-description {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin-top: 2rem;
+            color: #fff;
         }
 
         .timeline-content h3 {
@@ -1068,7 +1120,12 @@
         /* Responsive */
         @media (max-width: 992px) {
             .about-hero h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
+            }
+            
+            .about-hero .hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
             }
             
             .blob-container {
@@ -1102,6 +1159,33 @@
         }
 
         @media (max-width: 768px) {
+            .timeline-section .section-title {
+                padding: 1.5rem;
+                margin: 0 -1rem 2rem;
+                border-radius: 0;
+            }
+
+            .timeline-section .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .timeline-section .section-title h3.history-subtitle {
+                font-size: 1.2rem;
+                margin: 1rem 0;
+            }
+            
+            .timeline-section .section-title p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            .timeline-section .section-title p.history-description {
+                padding: 1rem;
+                margin: 1.5rem -0.5rem 0;
+                border-radius: 0;
+                border-left: none;
+                border-top: 3px solid var(--accent);
+            }
             .nav-links {
                 position: fixed;
                 top: 0;

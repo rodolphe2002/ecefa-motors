@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ecefamotors.com/sitemap.xml
+
+# Désactiver l'indexation des fichiers CSS et JS
+Disallow: /css/
+Disallow: /js/
+Disallow: /img/
+
+# Autoriser les robots à explorer toutes les pages du site
+Allow: /*.html$
+Allow: /$
+
+# Désactiver l'indexation des pages d'administration (si existantes)
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+# Paramètres de crawl
+Crawl-delay: 10
